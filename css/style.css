@@ -1,0 +1,112 @@
+
+
+
+/* Logo styles */
+.logo {
+    max-width: 100px;
+    max-height: 50px;
+  }
+  
+  .logo:hover {
+    background-color: #291E1F;
+     opacity: 0.8;
+  }
+  
+  .menu_button {
+    max-width: 50px;
+    max-height: 25px;
+    float:right;
+    display: inline-block;
+  }
+  
+  .menu_button:hover {
+    background-color: #291E1F;
+    opacity: 0.8;
+  }
+  
+  .header {
+      background-color: #291E1F;
+      color: white;
+      padding: 20px;
+      align-items: center;
+  
+  }
+  
+  .logo-container {
+      max-height: 30px; 
+      background-color: #444
+  }
+  
+  
+  
+  .logo img {
+        max-width: 1%;
+        height: 1cm;
+  }
+  
+  .button {
+    background-color: white;
+    color: black;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+  }
+  .footer {
+      text-align: center;
+       color: #48494b;
+       padding: 30px;
+       font-family:Helvetica Neue;
+       clear: both;
+  }
+   .content {
+     color: #291E1F;
+     padding: 60px;
+     margin: 20px ;
+     position: absolute;
+     top: 40%;
+     left: 10%;
+     font-family:Helvetica Neue;
+     font-size: 32px;
+     
+  }
+   .chatbox {
+      float: right;
+  }
+  .fade-in-out {
+      opacity: 0;
+      animation: fadeIn 3s ease-in-out forwards;
+  }
+  
+  @keyframes fadeIn {
+      from {
+          opacity: 0;
+          transform: translateY(-20px);
+          
+      }
+      to {
+          opacity: 1;
+          transform: translateY(0);
+      }
+  }
+  
+  .fade-out-in {
+      opacity: 1;
+      animation: fadeOut 3s ease-in-out forwards;
+    
+  }
+  
+  @keyframes fadeOut {
+      from {
+          opacity: 1;
+          transform: translateY(0);
+      }
+      to {
+          opacity: 0;
+          transform: translateY(20px);
+      }
+  }
+  
+  .fade-in-out.show {
+      opacity: 1;
+  }
+  

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <title>Oracle Web SDK Sample</title>
+    <link rel="shortcut icon" href="">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="scripts/scripts.js"></script>
+    <script src="scripts/settings.js"></script>
+    <script>
+        var chatWidgetSettings = {
+            enableTimestamp: true,
+            showConnectionStatus: true,
+            conversationBeginPosition: 'bottom',
+            openChatOnLoad: true,
+            position: {bottom: '2px', right: '2px'},
+            displayActionAsPills: true,
+            initUserHiddenMessage: 'Hello',
+            embedded: true,
+            targetElement: 'chat-container',    
+            embedTopScrollId: 'top-text',
+            customHeaderElementId: 'custom-header',
+            botButtonIcon: 'images/bot-button.png', 
+            logoIcon: 'images/bot-white.png', 
+            botIcon: 'images/bot-green.png',        
+            personIcon: 'images/user-icon.png',
+            URI: YOUR_URI,
+            channelId: YOUR_CHANNELID,
+
+         };
+    </script>
+    <script src="scripts/web-sdk.js" onload="initSdk('Bots')"></script>
+</head>
+
+
+<body>
+    <div>
+        <header class="header">
+            <img src="8.png" alt="Logo" class="logo">
+            <img src="9.png" alt="Logo" class="menu_button">
+            <img src="10.png" alt="Logo" class="menu_button">
+        </header>
+
+    </div>
+
+    <div>
+        <section class="content">
+            <h2 id="contentText" class="fade-in-out">Siempre Ayudando</h2>
+        </section>
+
+        <!-- Add the widget container tags here -->
+
+        <footer class="footer">
+            <p></p>
+        </footer>
+    <div>
+
+</body>
+
+</html>

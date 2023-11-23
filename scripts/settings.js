@@ -7,48 +7,66 @@
  *
  * @param {string} name Name by which the chat widget should be referred
  */
-function initSdk(name) {
-    // Retry initialization later if WebSDK is not available yet
-    if (!document || !WebSDK) {
+var chatWidgetSettings = {
+    URI: "oda-9cefd7df104d451ea687c33c8b006289-da3.data.digitalassistant.oci.oraclecloud.com/",
+    channelId: "0ae88895-2c67-4cd2-a319-559245430a33",
+    theme: "redwood-dark",
+    enableClearMessage: true,
+    enableLocalConversationHistory: true,
+    enableTimestamp: true,
+    showConnectionStatus: true,
+    showTypingIndicator: true,
+    disablePastActions: 'all',
+    customHeaderElementId: "customHeaderElement",
+    embedTopStickyId: "topStickyElement",
+    logoIcon: 'images/bot-white.png',
+    botIcon: 'images/bot-white.png',
+    personIcon: 'images/user.png',
+    isDebugMode: true,
+    locale: 'es-mx',
+    'multiLangChat': true,
+    multiLangChat: {
+        supportedLangs: [{
+            lang: 'en'
+        }, {
+            lang: 'es',
+            label: 'Español'
+        }],
+        primary: 'en'
+    },
+    "i18n": {
+        "es-mx": {
+            "chatTitle": "Asistente Tec CCM"
+        },
+        "en-us": {
+            "chatTitle": "Tec CCM Assistant"
+        }
+    }
+};
+!function (globalObj, doc, library, name) {
+    function initiateSDK() {
         setTimeout(function () {
-            initSdk(name);
+            globalObj[name] = Object.assign(WebSDK);
+            globalObj[name] = new globalObj[name](chatWidgetSettings);
+            globalObj[name].connect().then(() => {
+
+            }, (reason) => {
+                console.log("Connection failed");
+                console.log(reason);
+            });
         }, 2000);
-        return;
     }
-
-    if (!name) {
-        name = 'Bots';          // Set default reference name to 'Bots'
+    try {
+        var scripts = doc.getElementsByTagName("script")[0],
+            lib = doc.createElement("script");
+        lib.async = true;
+        lib.src = library;
+        lib.onReady = initiateSDK();
+        scripts.parentNode.insertBefore(lib, scripts);
+    } catch (e) {
+        console.error("Could not load the chat widget");
     }
-    var Bots;
-
-
-
-    setTimeout(function () {
-
-        var chatWidgetSettings = {
-            URI: 'oda-9cefd7df104d451ea687c33c8b006289-da3.data.digitalassistant.oci.oraclecloud.com/', // ODA URI, pass the hostname. Do not include the protocol (https://).
-
-            channelId: '0ae88895-2c67-4cd2-a319-559245430a33', // Channel ID, available in channel settings in ODA UI
-
-//Add settings here
-
-
-        };
-
-
-        Bots = new WebSDK(chatWidgetSettings);
-
-
-
-        Bots.connect();
-
-//Add Bots.setUserInputMessage('Order pizza'); here. Comment out for voice recognition.
-
-
-        // Create global object to refer Bots
-        window[name] = Bots;
-    }, 0);
-}
+}(window, document, "scripts/web-sdk.js", "Bots");
 
 
 
